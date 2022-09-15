@@ -10,6 +10,6 @@ router.get('/logout', userController.logout);
 
 router.get('/refreshToken', userController.refreshToken);
 
-router.get('/:id', auth, userController.getUser);
+router.get('/userInfo', auth, userController.getUser);
 
 module.exports = router;

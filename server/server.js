@@ -14,6 +14,7 @@ app.use(fileUpload({ useTempFiles: true }));
 
 // Routes
 app.use('/users', require('./routes/userRouter'));
+app.use('/api', require('./routes/categoryRouter'));
 
 // Connect to DB
 mongoose.connect(process.env.DB_CONNECTION, {
