@@ -34,6 +34,7 @@ const categoryController = {
         try {
             const name = req.body.name;
             const updatedCategory = await Category.findByIdAndUpdate(req.params.id, { name })
+
             if (!updatedCategory) {
                 return res.status(400).json({ msg: "Category does not exist!" });
             }
