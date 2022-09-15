@@ -12,6 +12,9 @@ app.use(cors({ credentials: true, origin: 'http://localhost:8080' }));
 app.use(express.urlencoded({ extended: false }));
 app.use(fileUpload({ useTempFiles: true }));
 
+// Routes
+app.use('/users', require('./routes/userRouter'));
+
 // Connect to DB
 mongoose.connect(process.env.DB_CONNECTION, {
     useNewUrlParser: true,
@@ -21,11 +24,6 @@ mongoose.connect(process.env.DB_CONNECTION, {
     }
     console.log('Mongo DB Connection successful!');
 });
-
-// Routes
-app.get('/', (req, res) => {
-    res.json({ msg: 'We are on home' });
-})
 
 // Start listening to the server
 const PORT = process.env.PORT || 5000;
