@@ -56,7 +56,6 @@ const productController = {
                 products: products
             })
 
-            return res.json(products);
         } catch (err) {
             return res.status(500).json({ msg: err.message });
         }
