@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Products from './products/Products';
+import ProductDetails from './productDetails/productDetails';
 import Login from './auth/Login';
 import Register from './auth/Register';
 import Cart from './cart/Cart';
@@ -10,6 +11,8 @@ function Pages() {
     return (
         <Routes>
             <Route path='/' element={<Products />} />
+            <Route path='/detail/:id' element={<ProductDetails />} />
+
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
             <Route path='/cart' element={<Cart />} />

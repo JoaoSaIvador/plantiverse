@@ -6,9 +6,9 @@ const fileUpload = require('express-fileupload');
 require('dotenv').config({ path: "./.env" });
 
 const app = express();
-app.use(express.json())
+app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ credentials: true, origin: 'http://localhost:8080' }));
+app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use(express.urlencoded({ extended: false }));
 app.use(fileUpload({ useTempFiles: true }));
 
