@@ -1,10 +1,14 @@
-import React from 'react'
-import BtnRender from './BtnRender'
+import React from 'react';
+import BtnRender from './BtnRender';
 
-function ProductItem({ product }) {
+function ProductItem({ product, isAdmin }) {
 
     return (
         <div className="product_card">
+            {
+                isAdmin && <input type="checkbox" checked={product.checked} />
+            }
+
             <img src={product.images.url} alt="" />
 
             <div className="product_box">
@@ -16,7 +20,7 @@ function ProductItem({ product }) {
 
             <BtnRender product={product} />
         </div>
-    )
+    );
 }
 
-export default ProductItem
+export default ProductItem;

@@ -10,14 +10,14 @@ function Login() {
 
     const onChangeInput = e => {
         const { name, value } = e.target;
-        setUser({ ...user, [name]: value })
-    }
+        setUser({ ...user, [name]: value });
+    };
 
     const loginSubmit = async e => {
         e.preventDefault();
 
         try {
-            await axios.post('http://localhost:5000/users/login', { ...user });
+            await axios.post('users/login', { ...user });
 
             localStorage.setItem('firstLogin', true);
 
@@ -25,7 +25,7 @@ function Login() {
         } catch (err) {
             alert(err.response.data.msg);
         }
-    }
+    };
 
     return (
         <div className='login-page'>
@@ -40,7 +40,7 @@ function Login() {
                 </div>
             </form>
         </div>
-    )
+    );
 }
 
-export default Login
+export default Login;

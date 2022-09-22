@@ -7,26 +7,26 @@ function Register() {
         name: '',
         email: '',
         password: ''
-    })
+    });
 
     const onChangeInput = e => {
         const { name, value } = e.target;
-        setUser({ ...user, [name]: value })
-    }
+        setUser({ ...user, [name]: value });
+    };
 
     const registerSubmit = async e => {
-        e.preventDefault()
+        e.preventDefault();
         try {
-            await axios.post('/user/register', { ...user })
+            await axios.post('users/register', { ...user });
 
-            localStorage.setItem('firstLogin', true)
+            localStorage.setItem('firstLogin', true);
 
 
             window.location.href = "/";
         } catch (err) {
-            alert(err.response.data.msg)
+            alert(err.response.data.msg);
         }
-    }
+    };
 
     return (
         <div className="login-page">
@@ -44,7 +44,7 @@ function Register() {
                 </div>
             </form>
         </div>
-    )
+    );
 }
 
-export default Register
+export default Register;
