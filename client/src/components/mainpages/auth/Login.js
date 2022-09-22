@@ -17,7 +17,7 @@ function Login() {
         e.preventDefault();
 
         try {
-            await axios.post('users/login', { ...user });
+            await axios.post('/users/login', { ...user });
 
             localStorage.setItem('firstLogin', true);
 

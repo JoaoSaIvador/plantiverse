@@ -9,15 +9,13 @@ import axios from 'axios';
 
 function Header() {
     const state = useContext(GlobalState);
-    const [isLogged, setIsLogged] = state.userAPI.isLogged;
-    const [isAdmin, setIsAdmin] = state.userAPI.isAdmin;
+    const [isLogged] = state.userAPI.isLogged;
+    const [isAdmin] = state.userAPI.isAdmin;
     const [cart] = state.userAPI.cart;
 
     const logoutUser = async () => {
-        await axios.get('users/logout');
-
+        await axios.get('/users/logout');
         localStorage.removeItem('firstLogin');
-
         window.location.href = "/";
     };
 

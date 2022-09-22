@@ -8,7 +8,7 @@ import './index.css';
 
 axios.defaults.withCredentials = true;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-axios.defaults.baseURL = 'http://localhost:5000/';
+axios.defaults.baseURL = 'http://localhost:5000';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
