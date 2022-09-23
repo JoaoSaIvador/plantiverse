@@ -3,18 +3,18 @@ import { useParams, Link } from 'react-router-dom';
 import { GlobalState } from '../../../GlobalState';
 import ProductItem from '../utils/productItem/ProductItem';
 
-function productDetails() {
+function ProductDetails() {
     const params = useParams();
     const state = useContext(GlobalState);
     const [products] = state.productsAPI.products;
-    const [detailProduct, setDetailProduct] = useState([])
+    const [detailProduct, setDetailProduct] = useState([]);
 
     useEffect(() => {
         if (params.id) {
 
             products.forEach(product => {
-                if (product._id === params.id) setDetailProduct(product)
-            })
+                if (product._id === params.id) setDetailProduct(product);
+            });
         }
     }, [params.id, products]);
 
@@ -47,7 +47,7 @@ function productDetails() {
                     {
                         products.map(product => {
                             return product.category === detailProduct.category
-                                ? <ProductItem key={product._id} product={product} /> : null
+                                ? <ProductItem key={product._id} product={product} /> : null;
                         })
                     }
                 </div>
@@ -56,4 +56,4 @@ function productDetails() {
     );
 }
 
-export default productDetails
+export default ProductDetails;
