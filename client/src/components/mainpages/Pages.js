@@ -7,6 +7,8 @@ import Register from './auth/Register';
 import Cart from './cart/Cart';
 import NotFound from './utils/notFound/NotFound';
 import { GlobalState } from '../../GlobalState';
+import OrderHistory from './history/OrderHistory';
+import OrderDetails from './history/OrderDetails';
 
 function Pages() {
     const state = useContext(GlobalState);
@@ -20,6 +22,9 @@ function Pages() {
 
             <Route path='/login' element={isLogged ? <NotFound /> : <Login />} />
             <Route path='/register' element={isLogged ? <NotFound /> : <Register />} />
+
+            <Route path='/history' element={isLogged ? <NotFound /> : <OrderHistory />} />
+            <Route path='/history/:id' element={isLogged ? <NotFound /> : <OrderDetails />} />
 
             <Route path='/cart' element={<Cart />} />
 
