@@ -33,7 +33,7 @@ const categoryController = {
     updateCategory: async (req, res) => {
         try {
             const name = req.body.name;
-            const updatedCategory = await Category.findByIdAndUpdate(req.params.id, { name })
+            const updatedCategory = await Category.findByIdAndUpdate(req.params.id, { name });
 
             if (!updatedCategory) {
                 return res.status(400).json({ msg: "Category does not exist!" });
@@ -46,17 +46,17 @@ const categoryController = {
     },
     deleteCategory: async (req, res) => {
         try {
-            // Find category and delete it
-            const deletedCategory = await Category.findByIdAndDelete(req.params.id);
-            if (!deletedCategory) {
-                return res.status(400).json({ msg: "Category does not exist!" });
-            }
+            const products = await Products.findOne({ category: req.params.id });
+            if (products) return res.status(400).json({
+                msg: "Please delete all products with a relationship."
+            });
 
+            await Category.findByIdAndDelete(req.params.id);
             res.json({ msg: "Category deleted!" });
         } catch (err) {
             return res.status(500).json({ msg: err.message });
         }
     }
-}
+};
 
 module.exports = categoryController;
