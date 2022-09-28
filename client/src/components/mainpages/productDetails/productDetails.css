@@ -1,17 +1,32 @@
+.product-details {
+    border-radius: 20px;
+    max-width: 1000px;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 14px 28px,
+        rgba(0, 0, 0, 0.06) 0px 10px 10px;
+}
+
 .product-details-img {
     max-width: 400px;
     height: 450px;
     object-fit: cover;
     display: block;
+    border-radius: 20px;
 }
 
-.product-details {
+.product-details-info {
     max-width: 500px;
     height: inherit;
 }
 
 .product-details-btn {
     max-width: 120px;
+}
+
+@media (max-width: 1245px) {
+    .product-details {
+        background-color: inherit !important;
+        box-shadow: none;
+    }
 }
 
 @media (max-width: 980px) {
