@@ -31,7 +31,7 @@ function Header() {
     };
 
     return (
-        <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className='w-100 py-2 customNavBar'>
+        <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className='w-100 py-2 mb-5 customNavBar'>
             <Container>
                 <Navbar.Brand href="/">Plantiverse</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />

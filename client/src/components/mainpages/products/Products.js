@@ -56,9 +56,12 @@ function Products() {
         });
     };
 
-    if (loading) return <div><Loading /></div>;
+    if (loading) {
+        return <div><Loading /></div>;
+    }
+
     return (
-        <>
+        <div className="main-div d-flex flex-column justify-content-center align-content-center">
             <Filters />
 
             {
@@ -70,18 +73,17 @@ function Products() {
                 </div>
             }
 
-            <div className="products">
+            <div className="w-100 mb-3 products">
                 {
                     products.map(product => {
-                        return <ProductItem key={product._id} product={product}
-                            isAdmin={isAdmin} deleteProduct={deleteProduct} handleCheck={handleCheck} />;
+                        return <ProductItem key={product._id} product={product} isAdmin={isAdmin} deleteProduct={deleteProduct} handleCheck={handleCheck} />;
                     })
                 }
             </div>
 
             <LoadMore />
             {products.length === 0 && <Loading />}
-        </>
+        </div>
     );
 }
 

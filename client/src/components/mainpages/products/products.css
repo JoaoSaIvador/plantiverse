@@ -1,9 +1,7 @@
 .products {
-    width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     justify-items: center;
-    margin: 20px 0;
 }
 
 @import url("../utils/productItem/productItem.css");
@@ -34,29 +32,8 @@
 }
 
 /* ------------ Filters Menu ----------------- */
-.filter_menu {
-    width: 100%;
-    min-height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    margin: 15px 0;
-}
-
-.filter_menu select,
-input {
-    border: 1px solid #ccc;
-    outline: none;
-    height: 40px;
-    padding: 0 5px;
-}
-
-.filter_menu input {
-    display: flex;
-    flex-grow: 1;
-    max-width: 770px;
-    margin: 0 10px;
+.customInput {
+    max-width: 400px;
 }
 
 /* -------------------- Load More --------------- */

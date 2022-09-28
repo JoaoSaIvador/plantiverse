@@ -10,7 +10,7 @@ function App() {
   return (
     <DataProvider>
       <Router>
-        <div className="App">
+        <div className="App d-flex flex-column align-items-center">
           <Header />
           <Pages />
         </div>

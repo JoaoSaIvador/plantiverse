@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { GlobalState } from '../../../../GlobalState';
+import Button from 'react-bootstrap/Button';
 
 function BtnRender({ product, deleteProduct }) {
     const state = useContext(GlobalState);
@@ -9,24 +9,16 @@ function BtnRender({ product, deleteProduct }) {
 
 
     return (
-        <div className="row_btn">
+        <div className="d-flex flex-row justify-content-center">
             {
                 isAdmin ?
                     <>
-                        <Link id="btn_buy" to="#!" onClick={() => deleteProduct(product._id, product.images.public_id)}>
-                            Delete
-                        </Link>
-                        <Link id="btn_view" to={`/edit_product/${product._id}`}>
-                            Edit
-                        </Link>
+                        <Button variant="dark" className='me-3 custom-btn' to="#!" onClick={() => deleteProduct(product._id, product.images.public_id)}>Delete</Button>
+                        <Button variant="dark" className='custom-btn' to={`/edit_product/${product._id}`}>Edit</Button>
                     </>
                     : <>
-                        <Link id="btn_buy" to="#!" onClick={() => addCart(product)}>
-                            Buy
-                        </Link>
-                        <Link id="btn_view" to={`/detail/${product._id}`}>
-                            View
-                        </Link>
+                        <Button variant="dark" className='me-3 custom-btn' to="#!" onClick={() => addCart(product)}>Buy</Button>
+                        <Button variant="dark" className='custom-btn' to="#!" href={`/detail/${product._id}`}>View</Button>
                     </>
             }
 
