@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 function ProductItem({ product, isAdmin, deleteProduct, handleCheck }) {
 
     return (
-        <Card className='mb-4'>
+        <Card className='mb-4 mx-4'>
             {
                 isAdmin && <input type="checkbox" className='custom-checkbox' checked={product.checked} onChange={() => handleCheck(product._id)} />
             }

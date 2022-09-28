@@ -1,26 +1,20 @@
-.load-page {
-    background: #fff;
-    overflow: hidden;
+.loader-container {
+    position: fixed;
+    z-index: 1;
 }
 
-.loader {
-    width: 300px;
-    height: 300px;
-    margin: auto;
-}
-
-.loader div {
-    width: calc(100% - 15px);
-    height: calc(100% - 15px);
-    border: 2px solid #fff;
-    border-top: 2px solid crimson;
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 5px solid;
+    border-color: #272727 transparent #272727 transparent;
     border-radius: 50%;
-    animation: rotate 10s linear infinite alternate-reverse;
+    animation: spin-anim 1.2s linear infinite;
 }
 
-@keyframes rotate {
-    50% {
-        transform: rotate(80deg);
+@keyframes spin-anim {
+    0% {
+        transform: rotate(0deg);
     }
 
     100% {

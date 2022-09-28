@@ -61,29 +61,32 @@ function Products() {
     }
 
     return (
-        <div className="main-div d-flex flex-column justify-content-center align-content-center">
-            <Filters />
+        <>
+            <div className="main-div d-flex flex-column justify-content-center align-content-center">
+                <Filters />
 
-            {
-                isAdmin &&
-                <div className="delete-all">
-                    <span>Select all</span>
-                    <input type="checkbox" checked={isCheck} onChange={checkAll} />
-                    <button onClick={deleteAll}>Delete ALL</button>
-                </div>
-            }
-
-            <div className="w-100 mb-3 products">
                 {
-                    products.map(product => {
-                        return <ProductItem key={product._id} product={product} isAdmin={isAdmin} deleteProduct={deleteProduct} handleCheck={handleCheck} />;
-                    })
+                    isAdmin &&
+                    <div className="delete-all">
+                        <span>Select all</span>
+                        <input type="checkbox" checked={isCheck} onChange={checkAll} />
+                        <button onClick={deleteAll}>Delete ALL</button>
+                    </div>
                 }
+
+                <div className="w-100 mb-3 products">
+                    {
+                        products.map(product => {
+                            return <ProductItem key={product._id} product={product} isAdmin={isAdmin} deleteProduct={deleteProduct} handleCheck={handleCheck} />;
+                        })
+                    }
+                </div>
+
+                <LoadMore />
             </div>
 
-            <LoadMore />
             {products.length === 0 && <Loading />}
-        </div>
+        </>
     );
 }
 
