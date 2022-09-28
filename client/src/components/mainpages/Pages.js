@@ -20,7 +20,7 @@ function Pages() {
     return (
         <Routes>
             <Route path='/' element={<Products />} />
-            <Route path='/detail/:id' element={<ProductDetails />} />
+            <Route path='/details/:id' element={<ProductDetails />} />
 
             <Route path='/login' element={isLogged ? <NotFound /> : <Login />} />
             <Route path='/register' element={isLogged ? <NotFound /> : <Register />} />

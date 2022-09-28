@@ -17,7 +17,7 @@ function Filters() {
     };
 
     return (
-        <div className="w-100 d-flex flex-row justify-content-center align-items-center flex-wrap">
+        <div className="w-100 d-flex flex-row justify-content-center align-items-center flex-wrap mb-3">
             <div className="d-flex flex-row align-items-center me-3 mb-2">
                 <Form.Label className='me-2 mb-0'>Filters: </Form.Label>
                 <Form.Select name="category" value={category} onChange={handleCategory} >

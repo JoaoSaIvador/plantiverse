@@ -70,7 +70,7 @@ function Products() {
 
                 {
                     isAdmin &&
-                    <div className="w-100 d-flex flex-row justify-content-start align-items-center my-3">
+                    <div className="w-100 d-flex flex-row justify-content-start align-items-center mb-3">
                         <Button variant="dark" className='me-2' onClick={checkAll}>Select All</Button>
                         <Button variant="danger" onClick={deleteMultiple}>Delete</Button>
                     </div>

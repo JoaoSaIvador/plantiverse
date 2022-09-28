@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { GlobalState } from '../../../GlobalState';
 import ProductItem from '../utils/productItem/ProductItem';
+import Button from 'react-bootstrap/Button';
 
 function ProductDetails() {
     const params = useParams();
@@ -24,21 +25,28 @@ function ProductDetails() {
     };
 
     return (
-        <div>
-            <div className="detail">
-                <img src={detailProduct.images.url} alt="" />
-                <div className="box-detail">
-                    <div className="row">
-                        <h2>{detailProduct.title}</h2>
-                        <h6>#id: {detailProduct.product_id}</h6>
+        <>
+            <div className="w-100 d-flex flex-row justify-content-center flex-wrap mx-3">
+                <img src={detailProduct.images.url} alt="" className='w-100 my-3 me-5 product-details-img' />
+                <div className="w-100 m-3 d-flex flex-column justify-content-between product-details">
+                    <div className='d-flex flex-column'>
+                        <div className="d-flex flex-row justify-content-between align-items-center">
+                            <h2 className='text-uppercase fs-1'>{detailProduct.title}</h2>
+                            <h6>#id: {detailProduct.product_id}</h6>
+                        </div>
+
+                        <span className='fs-4 fw-bold'>$ {detailProduct.price}</span>
+
+                        <h6 className='mt-3 mb-0 fs-5'>Description</h6>
+                        <p className='m-0'>{detailProduct.description}</p>
+
+                        <h6 className='mt-3 mb-0 fs-5'>Species</h6>
+                        <p className='mt-0 mb-3'>{detailProduct.content}</p>
                     </div>
-                    <span>$ {detailProduct.price}</span>
-                    <p>{detailProduct.description}</p>
-                    <p>{detailProduct.content}</p>
-                    <p>Sold: {detailProduct.sold}</p>
-                    <Link to="/cart" className="cart" onClick={() => { addCard(detailProduct); }}>
-                        Buy Now
-                    </Link>
+                    <div className='d-flex flex-column mb-2'>
+                        <p>Sold: {detailProduct.sold}</p>
+                        <Button className='product-details-btn' variant="dark" href="/cart" onClick={() => { addCard(detailProduct); }}>Add to Cart</Button>
+                    </div>
                 </div>
             </div>
 
@@ -53,7 +61,7 @@ function ProductDetails() {
                     }
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 
