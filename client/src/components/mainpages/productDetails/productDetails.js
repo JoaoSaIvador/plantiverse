@@ -26,7 +26,7 @@ function ProductDetails() {
 
     return (
         <>
-            <div className="w-100 d-flex flex-row justify-content-center flex-wrap mx-3">
+            <div className="main-div d-flex flex-row justify-content-center flex-wrap mx-3 mb-5">
                 <img src={detailProduct.images.url} alt="" className='w-100 my-3 me-5 product-details-img' />
                 <div className="w-100 m-3 d-flex flex-column justify-content-between product-details">
                     <div className='d-flex flex-column'>
@@ -50,9 +50,9 @@ function ProductDetails() {
                 </div>
             </div>
 
-            <div>
-                <h2>Related products</h2>
-                <div className="products">
+            <div className='main-div d-flex flex-column align-items-center my-5'>
+                <h2 className='mb-4'>Related Products</h2>
+                <div className="w-100 mb-3 products">
                     {
                         products.map(product => {
                             return product.category === detailProduct.category
