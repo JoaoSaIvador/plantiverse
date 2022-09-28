@@ -5,6 +5,7 @@ import Loading from '../utils/loading/Loading';
 import axios from 'axios';
 import Filters from './Filters';
 import LoadMore from './LoadMore';
+import Button from 'react-bootstrap/Button';
 
 
 function Products() {
@@ -43,16 +44,18 @@ function Products() {
     };
 
     const checkAll = () => {
+        setIsCheck(!isCheck);
         products.forEach(product => {
             product.checked = !isCheck;
         });
         setProducts([...products]);
-        setIsCheck(!isCheck);
     };
 
-    const deleteAll = () => {
+    const deleteMultiple = () => {
         products.forEach(product => {
-            if (product.checked) deleteProduct(product._id, product.images.public_id);
+            if (product.checked) {
+                deleteProduct(product._id, product.images.public_id);
+            }
         });
     };
 
@@ -67,10 +70,9 @@ function Products() {
 
                 {
                     isAdmin &&
-                    <div className="delete-all">
-                        <span>Select all</span>
-                        <input type="checkbox" checked={isCheck} onChange={checkAll} />
-                        <button onClick={deleteAll}>Delete ALL</button>
+                    <div className="w-100 d-flex flex-row justify-content-start align-items-center my-3">
+                        <Button variant="dark" className='me-2' onClick={checkAll}>Select All</Button>
+                        <Button variant="danger" onClick={deleteMultiple}>Delete</Button>
                     </div>
                 }
 

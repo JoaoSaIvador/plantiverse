@@ -13,4 +13,19 @@
     position: absolute;
     width: 20px;
     height: 20px;
+    margin: 5px 0 0 5px;
+    border: 1.5px solid #212529 !important;
+    border-radius: 50% !important;
+    background-color: white;
+    appearance: none;
+    background-size: 0;
+    background-image: url("../../../../assets/check.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.2s;
+}
+
+.custom-checkbox:checked {
+    background-size: 60%;
+    background-color: #212529;
 }
