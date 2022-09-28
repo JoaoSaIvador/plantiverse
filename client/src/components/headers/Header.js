@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import { GlobalState } from '../../GlobalState';
 import { Link } from 'react-router-dom';
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import axios from 'axios';
+
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 
 
 function Header() {
@@ -22,57 +24,42 @@ function Header() {
     const adminRouter = () => {
         return (
             <>
-                <li><Link to="/create_product">Create Product</Link></li>
-                <li><Link to="/category">Categories</Link></li>
-            </>
-        );
-    };
-
-    const loggedRouter = () => {
-        return (
-            <>
-                <li><Link to="/history">History</Link></li>
-                <li><Link to="/" onClick={logoutUser}>Logout</Link></li>
+                <Nav.Link href="/create_product">Create Product</Nav.Link>
+                <Nav.Link href="/category">Categories</Nav.Link>
             </>
         );
     };
 
     return (
-        <header>
-            <div className='menu'>
-                <MenuIcon sx={{ fontSize: 40 }} />
-            </div>
+        <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className='w-100 py-2 customNavBar'>
+            <Container>
+                <Navbar.Brand href="/">Plantiverse</Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="me-auto align-items-center">
+                        <Nav.Link href="/">{isAdmin ? 'Products' : 'Shop'}</Nav.Link>
+                        {isAdmin && adminRouter()}
+                        {isLogged && <Nav.Link href="/history">History</Nav.Link>}
+                    </Nav>
 
-            <div className='logo'>
-                <h1>
-                    <Link to="/">{isAdmin ? 'Admin' : 'Plantiverse'}</Link>
-                </h1>
-            </div>
+                    <Nav className='align-items-center'>
+                        {
+                            isLogged ? <Nav.Link href="/" onClick={logoutUser} className="me-3">Logout</Nav.Link> : <Nav.Link href="/login" className="me-3">Login/Register</Nav.Link>
+                        }
 
-            <ul>
-                <li><Link to="/">{isAdmin ? 'Products' : 'Shop'}</Link></li>
-
-                {isAdmin && adminRouter()}
-
-                {
-                    isLogged ? loggedRouter() : <li><Link to="/login">Login/Register</Link></li>
-                }
-
-                <li><CloseIcon sx={{ fontSize: 40 }} className="menu" /></li>
-            </ul>
-
-            {
-                isAdmin ? '' :
-                    <div className='cart-icon'>
-                        <span>{cart.length}</span>
-                        <Link to="/cart">
-                            <ShoppingCartIcon sx={{ fontSize: 40 }} />
-                        </Link>
-                    </div>
-            }
-
-
-        </header>
+                        {
+                            isAdmin ? '' :
+                                <div className='cart-icon'>
+                                    <span>{cart.length}</span>
+                                    <Link to="/cart">
+                                        <ShoppingCartIcon sx={{ fontSize: 30 }} />
+                                    </Link>
+                                </div>
+                        }
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
     );
 }
 

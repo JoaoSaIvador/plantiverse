@@ -1,44 +1,15 @@
-header {
-    min-height: 70px;
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
-}
-
-header .logo {
-    flex: 1;
-}
-
-header a {
-    text-transform: uppercase;
-    color: #555;
-}
-
-header ul {
-    margin-bottom: 0;
-}
-
-header ul li {
-    display: inline-block;
-    opacity: 0.7;
-    padding: 0 20px;
-}
-
-header ul li:hover {
-    opacity: 1;
-}
-
-.menu {
-    display: none !important;
+.customNavBar {
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 14px 28px,
+        rgba(0, 0, 0, 0.02) 0px 10px 10px;
 }
 
 .cart-icon {
     position: relative;
-    margin-right: 20px;
+    height: 30px;
+}
+
+.cart-icon a svg {
+    color: #343a40;
 }
 
 .cart-icon span {
@@ -46,8 +17,8 @@ header ul li:hover {
     border-radius: 20px;
     color: white;
     position: absolute;
-    top: -10px;
-    right: -10px;
-    padding: 5px 7px;
+    top: -6px;
+    right: -6px;
+    padding: 2px 6px;
     font-size: 10px;
 }

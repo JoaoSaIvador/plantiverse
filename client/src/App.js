@@ -4,6 +4,8 @@ import { DataProvider } from './GlobalState';
 import Header from "./components/headers/Header";
 import Pages from "./components/mainpages/Pages";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 function App() {
   return (
     <DataProvider>
