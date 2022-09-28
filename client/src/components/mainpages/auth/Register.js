@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 function Register() {
     const [user, setUser] = useState({
@@ -29,21 +30,31 @@ function Register() {
     };
 
     return (
-        <div className="login-page">
-            <form onSubmit={registerSubmit}>
-                <h2>Register</h2>
-                <input type="text" name="name" required placeholder="Name" value={user.name} onChange={onChangeInput} />
+        <div className='d-flex flex-column bg-light p-5 auth-content'>
+            <Form className='d-flex flex-column align-items-center justify-content-center' onSubmit={registerSubmit}>
+                <h2 className='mb-5'>Register</h2>
 
-                <input type="email" name="email" required placeholder="Email" value={user.email} onChange={onChangeInput} />
+                <Form.Group className="mb-3" controlId="form=Email">
+                    <Form.Label>Name:</Form.Label>
+                    <Form.Control type="text" name="name" required placeholder="Name" value={user.name} onChange={onChangeInput} />
+                </Form.Group>
 
-                <input type="password" name="password" required placeholder="Password" value={user.password} onChange={onChangeInput} />
+                <Form.Group className="mb-3" controlId="form=Email">
+                    <Form.Label>Email:</Form.Label>
+                    <Form.Control type="email" name='email' required placeholder='Email' value={user.email} onChange={onChangeInput} />
+                </Form.Group>
 
-                <div className="login-buttons">
-                    <button type="submit">Register</button>
-                    <Link to="/login">Login</Link>
+                <Form.Group className="mb-5" controlId="form=Email">
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Control type="password" name='password' required placeholder='Password' value={user.password} onChange={onChangeInput} />
+                </Form.Group>
+
+                <div className='d-flex flex-row justify-content-center align-items-center'>
+                    <Button className='me-2 auth-btn' variant="dark" type='submit'>Register</Button>
+                    <Button className='auth-btn' variant="outline-dark" href="/login">Login</Button>
                 </div>
-            </form>
-        </div>
+            </Form>
+        </div >
     );
 }
 
