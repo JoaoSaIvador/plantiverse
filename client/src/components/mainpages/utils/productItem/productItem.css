@@ -2,6 +2,7 @@
     width: 18rem;
     height: 18rem;
     object-fit: cover;
+    border-radius: 20px;
 }
 
 .custom-btn {
@@ -13,8 +14,8 @@
     position: absolute;
     width: 20px;
     height: 20px;
-    margin: 5px 0 0 5px;
-    border: 1.5px solid #212529 !important;
+    margin: 10px 0 0 10px;
+    border: none;
     border-radius: 50% !important;
     background-color: white;
     appearance: none;
@@ -28,4 +29,11 @@
 .custom-checkbox:checked {
     background-size: 60%;
     background-color: #212529;
+}
+
+.custom-card {
+    border-radius: 20px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 14px 28px,
+        rgba(0, 0, 0, 0.04) 0px 10px 10px;
 }

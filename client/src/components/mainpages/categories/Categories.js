@@ -1,6 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { GlobalState } from '../../../GlobalState';
 import axios from 'axios';
+import Form from 'react-bootstrap/Form';
+import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
+import CategoryItem from './CategoryItem';
 
 function Categories() {
     const state = useContext(GlobalState);
@@ -53,29 +57,33 @@ function Categories() {
     };
 
     return (
-        <div className="categories">
-            <form onSubmit={createCategory}>
-                <label htmlFor="category">Category</label>
-                <input type="text" name="category" value={category} required
-                    onChange={e => setCategory(e.target.value)} />
+        <div className="category-list bg-light d-flex flex-column justify-content-center align-items-center p-5 my-5">
+            <h1 className='mb-5' style={{ color: "#212529" }}>Categories</h1>
+            <Form className="w-100 my-4 d-flex flex-row justify-content-around align-items-center flex-nowrap" onSubmit={createCategory}>
+                <input
+                    placeholder="Enter your category"
+                    className="me-2 search-bar bg-light form-control"
+                    type="text"
+                    name="category"
+                    value={category}
+                    required
+                    onChange={e => setCategory(e.target.value)}
+                />
 
-                <button type="submit">{onEdit ? "Update" : "Create"}</button>
-            </form>
+                <button type="submit" className="create-category d-flex align-items-center justify-content-center">
+                    {onEdit ? <EditIcon /> : <AddIcon />}
+                </button>
 
-            <div className="category-col">
+            </Form>
+
+            <div className="w-100 d-flex flex-column align-items-center scroll">
                 {
                     categories.map(category => (
-                        <div className="category-row" key={category._id}>
-                            <p>{category.name}</p>
-                            <div>
-                                <button onClick={() => editCategory(category._id, category.name)}>Edit</button>
-                                <button onClick={() => deleteCategory(category._id)}>Delete</button>
-                            </div>
-                        </div>
+                        <CategoryItem category={category} editCategory={editCategory} deleteCategory={deleteCategory} key={category._id} />
                     ))
                 }
             </div>
-        </div>
+        </div >
     );
 }
 
