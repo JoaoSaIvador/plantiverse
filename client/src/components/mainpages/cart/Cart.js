@@ -1,6 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { GlobalState } from '../../../GlobalState';
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
+import Table from 'react-bootstrap/Table';
 import PaypalButton from './PaypalButton';
 
 function Cart() {
@@ -63,10 +65,17 @@ function Cart() {
         }
     };
 
-    const tranSuccess = async (payment) => {
-        const { paymentID, address } = payment;
+    const buyNow = async () => {
+        const address = {
+            city: 'San Jose',
+            country_code: 'US',
+            line1: '1 Main St, San Jose',
+            postal_code: '95131',
+            recipient_name: 'John Doe',
+            state: 'CA'
+        };
 
-        await axios.post('/api/payment', { cart, paymentID, address }, {
+        await axios.post('/api/payment', { cart, address }, {
             headers: { Authorization: token }
         });
 
@@ -76,39 +85,70 @@ function Cart() {
     };
 
     if (cart.length === 0) {
-        return <h2 style={{ textAlign: "center", fontSize: "5rem" }}>Cart Empty</h2>;
+        return <h2 style={{ textAlign: "center" }}>There are 0 items in your cart</h2>;
     }
 
     return (
-        <div>
-            {
-                cart.map(product => (
-                    <div className="detail cart" key={product._id}>
-                        <img src={product.images.url} alt="" />
+        <div style={{ width: '60%' }}>
+            <div className='d-flex flex-row justify-content-between mb-3'>
+                <h1>Shopping Cart</h1>
+                <h3>{cart.length}  Items</h3>
+            </div>
 
-                        <div className="box-detail">
-                            <h2>{product.title}</h2>
+            <hr className='cart-hr' />
 
-                            <h3>$ {product.price * product.quantity}</h3>
-                            <p>{product.description}</p>
-                            <p>{product.content}</p>
+            <Table className='custom-table mb-5' responsive>
+                <thead>
+                    <tr>
+                        <th style={{ textAlign: 'left', color: '#7c7c7c' }}>PRODUCT DETAILS</th>
+                        <th style={{ textAlign: 'center', color: '#7c7c7c' }}>QUANTITY</th>
+                        <th style={{ textAlign: 'center', color: '#7c7c7c' }}>PRICE</th>
+                        <th style={{ textAlign: 'center', color: '#7c7c7c' }}>SUBTOTAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        cart.map((product, index) => (
+                            <tr key={product._id}>
+                                <td>
+                                    <div className={'d-flex flex-row justify-content-between mt-5'}>
+                                        <img className='cart-item-img me-5' src={product.images.url} alt="" />
+                                        <div className='cart-item-info d-flex flex-column align-items-start justify-content-between'>
+                                            <div className='d-flex flex-column align-items-start justify-content-start'>
+                                                <h6 className='fs-3 mb-2'>{product.title}</h6>
+                                                <p className='cart-item-category fs-5'>{product.category}</p>
+                                            </div>
+                                            <Button className='cart-item-remove p-0' variant="link" onClick={() => removeProduct(product._id)}>Remove</Button>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className="cart-item-amount d-flex flex-row align-items-center justify-content-center m-5">
+                                        <button className='fs-2 d-flex justify-content-center align-items-center' onClick={() => decrement(product._id)}> - </button>
+                                        <span className='py-1 px-3 mx-2'>{product.quantity}</span>
+                                        <button className='fs-2 d-flex align-items-center' onClick={() => increment(product._id)}> + </button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className='d-flex align-items-center justify-content-center m-5'>
+                                        <span className='fs-5'>{product.price}$</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className='d-flex align-items-center justify-content-center m-5'>
+                                        <span className='fs-5'>{product.price * product.quantity}$</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        ))
+                    }
 
-                            <div className="amount">
-                                <button onClick={() => decrement(product._id)}> - </button>
-                                <span>{product.quantity}</span>
-                                <button onClick={() => increment(product._id)}> + </button>
-                            </div>
+                </tbody>
+            </Table>
 
-                            <div className="delete" onClick={() => removeProduct(product._id)}>
-                                X
-                            </div>
-                        </div>
-                    </div>
-                ))
-            }
-
-            <div className="total">
-                <h3>Total: $ {total}</h3>
+            <div className='d-flex flex-row'>
+                <h3>Total: {total}$</h3>
+                <Button variant="dark" className='d-flex align-items-center justify-content-center ms-3' style={{ width: '100px' }} onClick={buyNow}>Buy Now</Button>
             </div>
         </div>
     );
