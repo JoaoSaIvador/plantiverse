@@ -3,13 +3,15 @@ import axios from 'axios';
 import { GlobalState } from '../../../GlobalState';
 import Loading from '../utils/loading/Loading';
 import { useNavigate, useParams } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 const initialState = {
     product_id: '',
     title: '',
     price: 0,
-    description: 'How to and tutorial videos of cool CSS effect, Web Design ideas,JavaScript libraries, Node.',
-    content: 'Welcome to our channel Dev AT. Here you can learn web designing, UI/UX designing, html css tutorials, css animations and css effects, javascript and jquery tutorials and related so on.',
+    description: '',
     category: '',
     _id: ''
 };
@@ -139,53 +141,63 @@ function CreateProduct() {
     };
 
     const styleUpload = {
-        display: images ? "block" : "none"
+        display: images ? "block" : "none",
+    };
+
+    const imgDiv = () => {
+        if (onEdit) {
+            return (
+                <div id="file_img" style={styleUpload}>
+                    <img src={images ? images.url : ''} alt="" />
+                    <span onClick={handleDestroy}>X</span>
+                </div>
+            );
+        } else {
+            return (
+                <div id="file_img" style={styleUpload}>
+                    <img src={images ? images.url : ''} alt="" />
+                </div>
+            );
+        }
     };
 
     return (
-        <div className="create_product">
-            <div className="upload">
+        <div className="w-100 d-flex flex-row justify-content-center align-items-start my-5">
+            <div className="create-product-upload w-100 mx-5">
                 <input type="file" name="file" id="file_up" onChange={handleUpload} />
                 {
-                    loading ? <div id="file_img"><Loading /></div>
-
-                        : <div id="file_img" style={styleUpload}>
-                            <img src={images ? images.url : ''} alt="" />
-                            <span onClick={handleDestroy}>X</span>
-                        </div>
+                    loading ? <div id="file_img" className='d-flex justify-content-center align-items-center' ><Loading /></div> : imgDiv()
                 }
 
             </div>
 
-            <form onSubmit={handleSubmit}>
-                <div className="row">
-                    <label htmlFor="product_id">Product ID</label>
-                    <input type="text" name="product_id" id="product_id" required value={product.product_id} onChange={handleChangeInput} disabled={onEdit} />
-                </div>
+            <Form onSubmit={handleSubmit} className="create-product-form w-100">
+                <Form.Group className="mb-3">
+                    <Form.Label htmlFor="product_id">Product ID:</Form.Label>
+                    <Form.Control type="text" name="product_id" id="product_id" required value={product.product_id} onChange={handleChangeInput} disabled={onEdit} />
+                </Form.Group>
 
-                <div className="row">
-                    <label htmlFor="title">Title</label>
-                    <input type="text" name="title" id="title" required value={product.title} onChange={handleChangeInput} />
-                </div>
+                <Form.Group className="mb-3">
+                    <Form.Label htmlFor="title">Title:</Form.Label>
+                    <Form.Control type="text" name="title" id="title" required value={product.title} onChange={handleChangeInput} />
+                </Form.Group>
 
-                <div className="row">
-                    <label htmlFor="price">Price</label>
-                    <input type="number" name="price" id="price" required value={product.price} onChange={handleChangeInput} />
-                </div>
+                <Form.Group className="mb-3">
+                    <Form.Label htmlFor="price">Price:</Form.Label>
+                    <InputGroup className="mb-3">
+                        <Form.Control type="number" name="price" id="price" required value={product.price} onChange={handleChangeInput} />
+                        <InputGroup.Text>$</InputGroup.Text>
+                    </InputGroup>
+                </Form.Group>
 
-                <div className="row">
-                    <label htmlFor="description">Description</label>
-                    <textarea type="text" name="description" id="description" required value={product.description} rows="5" onChange={handleChangeInput} />
-                </div>
+                <Form.Group className="mb-3">
+                    <Form.Label htmlFor="description">Description:</Form.Label>
+                    <Form.Control as="textarea" type="text" name="description" id="description" required value={product.description} rows="5" onChange={handleChangeInput} />
+                </Form.Group>
 
-                <div className="row">
-                    <label htmlFor="content">Content</label>
-                    <textarea type="text" name="content" id="content" required value={product.content} rows="7" onChange={handleChangeInput} />
-                </div>
-
-                <div className="row">
-                    <label htmlFor="categories">Categories: </label>
-                    <select name="category" value={product.category} onChange={handleChangeInput} >
+                <Form.Group className="mb-3">
+                    <Form.Label htmlFor="categories">Categories: </Form.Label>
+                    <Form.Select name="category" value={product.category} onChange={handleChangeInput} >
                         <option value="">Please select a category</option>
                         {
                             categories.map(category => (
@@ -194,11 +206,11 @@ function CreateProduct() {
                                 </option>
                             ))
                         }
-                    </select>
-                </div>
+                    </Form.Select>
+                </Form.Group>
 
-                <button type="submit">{onEdit ? "Update" : "Create"}</button>
-            </form>
+                <Button variant="dark" type="submit">{onEdit ? "Update" : "Create"}</Button>
+            </Form>
         </div>
     );
 }
