@@ -75,7 +75,7 @@ function Cart() {
             state: 'CA'
         };
 
-        await axios.post('/api/payment', { cart, address }, {
+        await axios.post('/api/payment', { cart, address, total }, {
             headers: { Authorization: token }
         });
 

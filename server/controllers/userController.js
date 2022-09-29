@@ -1,4 +1,5 @@
 const User = require('../models/userModel');
+const Payment = require('../models/paymentModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -137,7 +138,7 @@ const userController = {
     },
     history: async (req, res) => {
         try {
-            const history = await Payments.find({ user_id: req.user.id });
+            const history = await Payment.find({ user_id: req.user.id });
 
             res.json(history);
         } catch (err) {

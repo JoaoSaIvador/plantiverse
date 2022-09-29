@@ -27,7 +27,7 @@ function CreateProduct() {
     const [isAdmin] = state.userAPI.isAdmin;
     const [token] = state.token;
 
-    const history = useNavigate();
+    const navigate = useNavigate();
     const param = useParams();
 
     const [products] = state.productsAPI.products;
@@ -134,7 +134,7 @@ function CreateProduct() {
             }
 
             setCallback(!callback);
-            history.push("/");
+            navigate("/");
         } catch (err) {
             alert(err.response.data.msg);
         }

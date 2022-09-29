@@ -32,24 +32,25 @@ function OrderHistory() {
     return (
         <div className="history-page">
             <h2>History</h2>
-
-            <h4>You have {history.length} orders</h4>
+            <h4>You have {history.length} order(s)</h4>
 
             <table>
                 <thead>
                     <tr>
-                        <th>Payment ID</th>
                         <th>Date of Purchase</th>
-                        <th></th>
+                        <th>Total</th>
+                        <th>Shipped To</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
                         history.map(items => (
                             <tr key={items._id}>
-                                <td>{items.paymentID}</td>
                                 <td>{new Date(items.createdAt).toLocaleDateString()}</td>
-                                <td><Link to={`/history/${items._id}`}>View</Link></td>
+                                <td>{items.total}$</td>
+                                <td>{items.address.line1 + " - " + items.address.city}</td>
+                                <td><Link to={`/history/${items._id}`}>Details</Link></td>
                             </tr>
                         ))
                     }

@@ -14,11 +14,11 @@ function BtnRender({ product, deleteProduct }) {
                 isAdmin ?
                     <>
                         <Button variant="dark" className='me-3 custom-btn' to="#!" onClick={() => deleteProduct(product._id, product.images.public_id)}>Delete</Button>
-                        <Button variant="dark" className='custom-btn' to={`/edit_product/${product._id}`}>Edit</Button>
+                        <Button variant="dark" className='custom-btn' href={`/edit_product/${product._id}`}>Edit</Button>
                     </>
                     : <>
                         <Button variant="dark" className='me-3 custom-btn' to="#!" onClick={() => addCart(product)}>Buy</Button>
-                        <Button variant="dark" className='custom-btn' to="#!" href={`/details/${product._id}`}>View</Button>
+                        <Button variant="dark" className='custom-btn' href={`/details/${product._id}`}>View</Button>
                     </>
             }
 

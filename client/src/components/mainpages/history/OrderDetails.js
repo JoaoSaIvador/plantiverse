@@ -48,7 +48,7 @@ function OrderDetails() {
             <table style={{ margin: "30px 0px" }}>
                 <thead>
                     <tr>
-                        <th></th>
+                        <th>Images</th>
                         <th>Products</th>
                         <th>Quantity</th>
                         <th>Price</th>
