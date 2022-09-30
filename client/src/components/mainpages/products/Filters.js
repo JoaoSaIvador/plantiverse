@@ -23,7 +23,7 @@ function Filters() {
                     <option value=''>All Products</option>
                     {
                         categories.map(category => (
-                            <option value={"category=" + category._id} key={category._id}>
+                            <option value={"category=" + category.name} key={category._id}>
                                 {category.name}
                             </option>
                         ))

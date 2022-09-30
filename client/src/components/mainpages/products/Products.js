@@ -84,10 +84,14 @@ function Products() {
                     }
                 </div>
 
+                <div className='w-100 mt-5'>
+                    {products.length === 0 && <Loading />}
+                </div>
+
                 <LoadMore />
             </div>
 
-            {products.length === 0 && <Loading />}
+
         </>
     );
 }
