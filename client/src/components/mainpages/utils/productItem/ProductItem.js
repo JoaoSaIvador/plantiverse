@@ -7,7 +7,7 @@ function ProductItem({ product, isAdmin, deleteProduct, handleCheck }) {
     const navigate = useNavigate();
 
     return (
-        <Card className='mb-4 mx-4 custom-card' onClick={() => { navigate(`/details/${product._id}`); }}>
+        <Card className='mb-4 mx-4 custom-card' onClick={() => { !isAdmin && navigate(`/details/${product._id}`); }}>
             {
                 isAdmin && <input type="checkbox" className='custom-checkbox' checked={product.checked} onChange={() => handleCheck(product._id)} />
             }
