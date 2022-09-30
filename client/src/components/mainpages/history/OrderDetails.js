@@ -26,7 +26,7 @@ function OrderDetails() {
 
     return (
         <div className="history-page">
-            <table>
+            <table style={{ backgroundColor: "white" }}>
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -45,7 +45,7 @@ function OrderDetails() {
                 </tbody>
             </table>
 
-            <table style={{ margin: "30px 0px" }}>
+            <table style={{ margin: "30px 0px", backgroundColor: "white" }}>
                 <thead>
                     <tr>
                         <th>Images</th>

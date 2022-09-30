@@ -34,7 +34,7 @@ function OrderHistory() {
             <h2>History</h2>
             <h4>You have {history.length} order(s)</h4>
 
-            <table>
+            <table style={{ backgroundColor: "white" }}>
                 <thead>
                     <tr>
                         <th>Date of Purchase</th>
