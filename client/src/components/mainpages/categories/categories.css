@@ -6,7 +6,6 @@
 }
 
 .scroll {
-    max-height: 510px;
     overflow-x: hidden;
     overflow-y: auto;
 }

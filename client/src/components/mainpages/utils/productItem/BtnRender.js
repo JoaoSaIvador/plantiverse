@@ -17,8 +17,7 @@ function BtnRender({ product, deleteProduct }) {
                         <Button variant="dark" className='custom-btn' href={`/edit_product/${product._id}`}>Edit</Button>
                     </>
                     : <>
-                        <Button variant="dark" className='me-3 custom-btn' to="#!" onClick={() => addCart(product)}>Buy</Button>
-                        <Button variant="dark" className='custom-btn' href={`/details/${product._id}`}>View</Button>
+                        <Button variant="dark" className='me-3 ' to="#!" onClick={() => addCart(product)}>Add to Cart</Button>
                     </>
             }
 

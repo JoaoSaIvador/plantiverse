@@ -35,13 +35,13 @@ function ProductDetails() {
                             <h6>#id: {detailProduct.product_id}</h6>
                         </div>
 
-                        <span className='fs-4 fw-bold'>$ {detailProduct.price}</span>
+                        <span className='fs-4 fw-bold'>{detailProduct.price}$</span>
 
                         <h6 className='mt-3 mb-0 fs-5'>Description</h6>
                         <p className='m-0'>{detailProduct.description}</p>
 
                         <h6 className='mt-3 mb-0 fs-5'>Species</h6>
-                        <p className='mt-0 mb-3'>{detailProduct.content}</p>
+                        <p className='mt-0 mb-3'>{detailProduct.category}</p>
                     </div>
                     <div className='d-flex flex-column mb-2'>
                         <p>Sold: {detailProduct.sold}</p>

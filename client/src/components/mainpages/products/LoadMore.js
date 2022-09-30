@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { GlobalState } from '../../../GlobalState';
+import Button from 'react-bootstrap/Button';
 
 function LoadMore() {
     const state = useContext(GlobalState);
@@ -9,8 +10,7 @@ function LoadMore() {
     return (
         <div className="load_more">
             {
-                result < page * 9 ? ""
-                    : <button onClick={() => setPage(page + 1)}>Load more</button>
+                result < page * 10 ? "" : <Button variant="outline-dark" className='mb-4 p-2' onClick={() => setPage(page + 1)}>Load More</Button>
             }
         </div>
     );

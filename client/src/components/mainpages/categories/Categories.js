@@ -76,7 +76,7 @@ function Categories() {
 
             </Form>
 
-            <div className="w-100 d-flex flex-column align-items-center scroll">
+            <div className="w-100 d-flex flex-column align-items-center scroll" style={{ maxHeight: "510px" }}>
                 {
                     categories.map(category => (
                         <CategoryItem category={category} editCategory={editCategory} deleteCategory={deleteCategory} key={category._id} />

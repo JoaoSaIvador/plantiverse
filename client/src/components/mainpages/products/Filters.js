@@ -19,7 +19,6 @@ function Filters() {
     return (
         <div className="w-100 d-flex flex-row justify-content-center align-items-center flex-wrap mb-3">
             <div className="d-flex flex-row align-items-center me-3 mb-2">
-                <Form.Label className='me-2 mb-0'>Filters: </Form.Label>
                 <Form.Select name="category" value={category} onChange={handleCategory} >
                     <option value=''>All Products</option>
                     {
@@ -32,10 +31,7 @@ function Filters() {
                 </Form.Select>
             </div>
 
-            <Form.Control className='me-3 mb-2 customInput' type="text" value={search} placeholder="Enter your search!" onChange={e => setSearch(e.target.value.toLowerCase())} />
-
-            <div className="d-flex flex-row align-items-center mb-2">
-                <Form.Label className='me-2 mb-0'>Sort: </Form.Label>
+            <div className="d-flex flex-row align-items-center mb-2 me-3">
                 <Form.Select value={sort} onChange={e => setSort(e.target.value)} >
                     <option value=''>Newest</option>
                     <option value='sort=oldest'>Oldest</option>
@@ -44,6 +40,10 @@ function Filters() {
                     <option value='sort=price'>Price: Low-Hight</option>
                 </Form.Select>
             </div>
+
+            <Form.Control className=' mb-2 customInput' type="text" value={search} placeholder="Enter your search!" onChange={e => setSearch(e.target.value.toLowerCase())} />
+
+
         </div>
     );
 }

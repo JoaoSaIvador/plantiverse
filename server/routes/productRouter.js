@@ -5,7 +5,7 @@ const authAdmin = require('../middleware/authAdmin');
 
 router.route('/products')
     .get(productController.getProducts)
-    .post(auth, authAdmin, productController.createProduct);
+    .post(productController.createProduct);
 
 router.route('/products/:id')
     .put(auth, authAdmin, productController.updateProduct)
