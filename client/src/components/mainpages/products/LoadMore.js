@@ -10,7 +10,7 @@ function LoadMore() {
     return (
         <div className="load_more">
             {
-                result < page * 10 ? "" : <Button variant="outline-dark" className='mb-4 p-2' onClick={() => setPage(page + 1)}>Load More</Button>
+                result <= page * 10 ? "" : <Button variant="outline-dark" className='mb-4 p-2' onClick={() => setPage(page + 1)}>Load More</Button>
             }
         </div>
     );
